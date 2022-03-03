@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>http://qtspace.cn/2022/03/02/ArrayList%E5%92%8CLinkedList/</loc>
+    
+    <lastmod>2022-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://qtspace.cn/2022/03/02/Collections%E5%B7%A5%E5%85%B7%E7%B1%BB/</loc>
     
     <lastmod>2022-03-03</lastmod>
@@ -66,15 +75,6 @@
   
   <url>
     <loc>http://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</loc>
-    
-    <lastmod>2022-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://qtspace.cn/2022/03/02/ArrayList%E5%92%8CLinkedList/</loc>
     
     <lastmod>2022-03-03</lastmod>
     
