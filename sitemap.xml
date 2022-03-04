@@ -155,13 +155,6 @@
 
   
   <url>
-    <loc>http://qtspace.cn/tags/Collections/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://qtspace.cn/tags/ArrayList/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -170,6 +163,13 @@
   
   <url>
     <loc>http://qtspace.cn/tags/LinkedList/</loc>
+    <lastmod>2022-03-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qtspace.cn/tags/Collections/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -211,14 +211,14 @@
   </url>
   
   <url>
-    <loc>http://qtspace.cn/tags/Kafka/</loc>
+    <loc>http://qtspace.cn/tags/ArrayDeque/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://qtspace.cn/tags/ArrayDeque/</loc>
+    <loc>http://qtspace.cn/tags/Kafka/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
