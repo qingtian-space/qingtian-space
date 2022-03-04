@@ -2,16 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://qtspace.cn/2022/03/02/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97ArrayDeque%E3%80%81LinkedList/</loc>
-    
-    <lastmod>2022-03-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</loc>
+    <loc>http://qtspace.cn/2022/03/02/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://qtspace.cn/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
+    <loc>http://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
@@ -38,7 +29,16 @@
   </url>
   
   <url>
-    <loc>http://qtspace.cn/2022/03/02/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
+    <loc>http://qtspace.cn/2022/03/02/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97ArrayDeque%E3%80%81LinkedList/</loc>
+    
+    <lastmod>2022-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://qtspace.cn/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
@@ -190,7 +190,7 @@
   </url>
   
   <url>
-    <loc>http://qtspace.cn/tags/HsahMap/</loc>
+    <loc>http://qtspace.cn/tags/HashMap/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -241,6 +241,13 @@
   </url>
   
   <url>
+    <loc>http://qtspace.cn/categories/Kafka/</loc>
+    <lastmod>2022-03-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://qtspace.cn/categories/Hexo/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -249,13 +256,6 @@
   
   <url>
     <loc>http://qtspace.cn/categories/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://qtspace.cn/categories/kafka/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
