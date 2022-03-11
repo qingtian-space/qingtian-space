@@ -205,13 +205,6 @@
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/Github/</loc>
-    <lastmod>2022-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://qtspace.cn/tags/Collections/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -219,7 +212,7 @@
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <loc>https://qtspace.cn/tags/Github/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -234,6 +227,13 @@
   
   <url>
     <loc>https://qtspace.cn/tags/HashMap/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://qtspace.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

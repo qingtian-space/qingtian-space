@@ -108,31 +108,6 @@
     
     
     <entry>
-      <title>Github上传本地项目</title>
-      <link href="/2022/03/02/Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
-      <url>/2022/03/02/Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</url>
-      
-        <content type="html"><![CDATA[<p>1.选择项目，右键Git Bash Here（需要安装Git）</p><p>2.在Git命令窗口输入git init命令之后，会生成一个.git文件夹</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>3.输入git add . 命令将全部的文件添加到缓存去(注意这个”.”，是有空格的，”.”代表这个test这个文件夹下的目录全部都提交。你也可以通过git add 文件名  提交指定的文件)。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>4.输入git commit -m “这里是注释”，把文件提交到本地仓库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit-m &quot;初始化项目&quot;</span><br></pre></td></tr></table></figure><p>5.连接远程仓库，克隆自己的github项目地址，比如为<a href="https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git%EF%BC%8C%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E3%80%82%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5github%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81">https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git，输入命令。连接过程中需要输入github账号密码</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git</span><br></pre></td></tr></table></figure><p>6.输入命令git push -u origin master 由于新建的远程仓库是空的，所以要加上-u这个参数。然后进去GitHub仓库刷新下就会有已经上传的文件夹了</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>7.最后输入git push origin master 将本地仓库推送到远程master分支</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> Github </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Github </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Collcetions 工具类</title>
       <link href="/2022/03/02/Collections%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
       <url>/2022/03/02/Collections%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
@@ -150,6 +125,31 @@
         <tags>
             
             <tag> Collections </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Github上传本地项目</title>
+      <link href="/2022/03/02/Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2022/03/02/Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<p>1.选择项目，右键Git Bash Here（需要安装Git）</p><p>2.在Git命令窗口输入git init命令之后，会生成一个.git文件夹</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>3.输入git add . 命令将全部的文件添加到缓存去(注意这个”.”，是有空格的，”.”代表这个test这个文件夹下的目录全部都提交。你也可以通过git add 文件名  提交指定的文件)。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>4.输入git commit -m “这里是注释”，把文件提交到本地仓库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit-m &quot;初始化项目&quot;</span><br></pre></td></tr></table></figure><p>5.连接远程仓库，克隆自己的github项目地址，比如为<a href="https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git%EF%BC%8C%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E3%80%82%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5github%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81">https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git，输入命令。连接过程中需要输入github账号密码</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://gitcode.net/CreativeAlliance/lottery-1195-qingtian.git</span><br></pre></td></tr></table></figure><p>6.输入命令git push -u origin master 由于新建的远程仓库是空的，所以要加上-u这个参数。然后进去GitHub仓库刷新下就会有已经上传的文件夹了</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>7.最后输入git push origin master 将本地仓库推送到远程master分支</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Github </tag>
             
         </tags>
       
