@@ -6,7 +6,7 @@
   <link href="https://qtspace.cn/atom.xml" rel="self"/>
   
   <link href="https://qtspace.cn/"/>
-  <updated>2022-03-17T13:04:02.465Z</updated>
+  <updated>2022-03-19T11:35:25.958Z</updated>
   <id>https://qtspace.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM-类加载详解</title>
+    <link href="https://qtspace.cn/2022/03/19/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    <id>https://qtspace.cn/2022/03/19/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD/</id>
+    <published>2022-03-18T16:00:00.000Z</published>
+    <updated>2022-03-19T11:35:25.958Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、JVM类加载过程"><a href="#一、JVM类加载过程" class="headerlink" title="一、JVM类加载过程"></a>一、JVM类加载过程</h3><p>JVM类加载过程如下图：</p><p><img src="https://qtspace.cn/contentimg/8.jpg"></p><p><img src="https://qtspace.cn/contentimg/9.jpg"></p><p>JVM类加载过程分为：<mark class="hl-label blue">加载</mark> 、<mark class="hl-label blue">链接</mark> 、<mark class="hl-label blue">初始化</mark> 、<mark class="hl-label blue">使用</mark> 、<mark class="hl-label blue">卸载</mark> 这五个阶段，其中链接阶段又包括：<mark class="hl-label green">验证</mark> 、<mark class="hl-label green">准备</mark> 、<mark class="hl-label green">解析</mark> 。</p><ul><li><mark class="hl-label blue">加载</mark> ：通过类的完全限定名，查找此类的二进制字节码文件，通过该字节码文件创建Class对象。</li><li><mark class="hl-label blue">链接</mark> ：包含<mark class="hl-label green">验证</mark> 、<mark class="hl-label green">准备</mark> 、<mark class="hl-label green">解析</mark> 三个阶段：<ul><li><mark class="hl-label green">验证</mark> ：确保Class文件复合虚拟机规定的Class文件格式，包含文件格式验证、元数据验证、字节码验证、引用符号验证。</li><li><mark class="hl-label green">准备</mark> ：为类的静态变量分配内存并设置初始化值，注：这里不包含`final`修饰的静态变量，因为`final`修饰的静态变量是在编译期分配。</li><li><mark class="hl-label green">解析</mark> ：将常量池的间接引用转换为直接引用，解析包含字段解析、接口解析、方法解析。</li></ul></li><li><mark class="hl-label blue">初始化</mark> ：初始化静态变量和静态块，先初始化父类，再初始化当前类，只有对类主动时才会初始化。</li><li><mark class="hl-label blue">使用</mark> ：程序代码执行时使用，new出对象程序中使用。</li><li><mark class="hl-label blue">卸载</mark> ：程序代码退出、异常、结束等，执行垃圾回收。</li></ul><h3 id="二、类加载时机"><a href="#二、类加载时机" class="headerlink" title="二、类加载时机"></a>二、类加载时机</h3><ul><li>创建类的实例，也就是<code>new</code>一个对象。</li><li>访问类的静态方法或者静态变量（包含静态变量赋值）。</li><li>使用<code>Class.forName()</code>反射类。</li><li>子类初始化的时候。</li><li>JVM启动时标明的启动类。</li></ul><h3 id="三、类加载器"><a href="#三、类加载器" class="headerlink" title="三、类加载器"></a>三、类加载器</h3><p>类加载器包括启动类加载器、扩展类加载器、系统类加载器、自定义类加载器四种加载器。</p><ul><li><p>启动类加载器（Bootstrap ClassLoader）：负责加载Java类的核心类，是用原生代码实现。下面代码可以获得启动类加载器所加载的Java核心类库。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">URL[] urLs = Launcher.getBootstrapClassPath().getURLs();</span><br><span class="line"><span class="keyword">for</span>(URL url : urLs)&#123;</span><br><span class="line">    System.out.println(url.toExternalForm());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>输出如下：</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/resources.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/rt.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/sunrsasign.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/jsse.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/jce.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/charsets.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/lib/jfr.jar</span></span><br><span class="line">file:/D:/Develop<span class="comment">%20Tools/Java/jdk-8u231/jre/classes</span></span><br></pre></td></tr></table></figure></li><li><p>扩展类加载器（Extensions ClassLoader）：负责加载JRE的扩展目录<code>lib/ext</code>或者由<code>java.ext.dirs</code>系统属性指定的目录中的JAR包的类。由Java语言实现，父类加载器为Null。</p></li><li><p>系统类加载器（System Class Loader）：负责在JVM启动时加载来自Java命令的<code>-classpath</code>选项、<code>java.class.path</code>系统属性。可以通过<code>ClassLoader.getSystemClassLoader()</code>方法获取当前系统类加载器，一般情况是自定义类加载器的父加载器。由Java语言实现，父类加载器为扩展类加载器。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(ClassLoader.getSystemClassLoader());</span><br><span class="line">System.out.println(ClassLoader.getSystemClassLoader().getParent());</span><br></pre></td></tr></table></figure><p>上面代码输出为：</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sun.misc.Launcher<span class="built_in">$</span>AppClassLoader@18b4aac2</span><br><span class="line">sun.misc.Launcher<span class="built_in">$</span>ExtClassLoader@4eb7f003</span><br></pre></td></tr></table></figure></li><li><p>自定义类加载器（Custom ClassLoader）：用户可以通过继承<code>ClassLoader</code>类实现自定义类加载器。由Java语言实现，自定义类加载器的父类是系统类加载器。</p></li></ul><h3 id="四、类加载机制"><a href="#四、类加载机制" class="headerlink" title="四、类加载机制"></a>四、类加载机制</h3><p>JVM的类加载机制主要有全盘负责、双亲委派、缓存机制三种加载机制。</p><ul><li>全盘负责：当一个类加载器加载某个Class时，该Class所依赖和引用其他Class也会由该类加载器负责加载，除非指定了使用其他类加载器加载。</li><li>双亲委派：先让父类加载器加载该Class，只有在父类加载器无法加载该类时才尝试使用自己的类加载器加载。通俗的讲就是在某个特定的类加载器接到加载类请求时，先寄托给父加载器加载，依次递归，如果父加载器可以加载时则成功返回，如果不可以加载就自己去加载。</li><li>缓存机制：缓存机制会确保所有加载过的Class都被会缓存，当程序中需要某个Class时，类加载器先从缓存区中搜索该Class，只有缓存区中不存在该Class对象时，系统才会读取该类的二进制数据，并将其转换为Class对象，存入缓存区。这就是为什么我们修改Class文件之后，必须重启JVM才会生效的原因。</li></ul><p>其中双亲委派机制优势：</p><ul><li>父类加载器成功加载则返回，子类加载器不会再加载，防止了重复加载。</li><li>防止核心API库被随意篡改。比如有一个要加载<code>java.lang.Integer</code>类的请求，通过双亲委派进制加载传递到启动类加载器，在在核心Java API发现这个名字的类，发现该类已被加载，并不会重新加载传递的过来的<code>java.lang.Integer</code>，而直接返回已加载过的<code>Integer.class</code>，可以防止核心API被随意篡改。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;一、JVM类加载过程&quot;&gt;&lt;a href=&quot;#一、JVM类加载过程&quot; class=&quot;headerlink&quot; title=&quot;一、JVM类加载过程&quot;&gt;&lt;/a&gt;一、JVM类加载过程&lt;/h3&gt;&lt;p&gt;JVM类加载过程如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://</summary>
+      
+    
+    
+    
+    <category term="JVM" scheme="https://qtspace.cn/categories/JVM/"/>
+    
+    
+    <category term="类加载" scheme="https://qtspace.cn/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>六大设计模式原则-接口隔离原则</title>
