@@ -277,14 +277,14 @@
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/Collections/</loc>
+    <loc>https://qtspace.cn/tags/Github/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/Github/</loc>
+    <loc>https://qtspace.cn/tags/Collections/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -340,14 +340,14 @@
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/Kafka/</loc>
+    <loc>https://qtspace.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://qtspace.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
+    <loc>https://qtspace.cn/tags/Kafka/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -433,14 +433,14 @@
   </url>
   
   <url>
-    <loc>https://qtspace.cn/categories/Kafka/</loc>
+    <loc>https://qtspace.cn/categories/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://qtspace.cn/categories/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
+    <loc>https://qtspace.cn/categories/Kafka/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
