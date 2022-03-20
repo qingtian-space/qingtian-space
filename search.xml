@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>六大设计模式原则-依赖倒置原则</title>
+      <link href="/2022/03/20/%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/"/>
+      <url>/2022/03/20/%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、依赖倒置原则定义"><a href="#一、依赖倒置原则定义" class="headerlink" title="一、依赖倒置原则定义"></a>一、依赖倒置原则定义</h3><p>依赖倒置原则：<strong>抽象不应该依赖于实现，实现应该依赖于抽象，也就是说我们应该面对抽象(接口)编程，而不应该面对实现编程。</strong></p><h3 id="二、依赖倒置原则描述"><a href="#二、依赖倒置原则描述" class="headerlink" title="二、依赖倒置原则描述"></a>二、依赖倒置原则描述</h3><p>依赖倒置原则要求我们在程序代码中传递参数或在关联关系时，尽量引用高层次类抽象类(接口类)，而不应该引用具体的实现类，即使用抽象类或者接口进行变量类型声明、参数类型声明、方法返回结果声明。</p><p>在引用抽象层之后，系统将得到很好的灵活性，抽象类无需改变，只需新增新的实现类即可，也满足了开闭原则。</p><h3 id="三、依赖倒置原则示例场景"><a href="#三、依赖倒置原则示例场景" class="headerlink" title="三、依赖倒置原则示例场景"></a>三、依赖倒置原则示例场景</h3><p>现有一个抽奖策略的设计，在不使用设计模式时，设计了一个<code>DrawControl</code>抽奖控制类，这个类里面包含了<code>doDrawRandom()</code>、<code>doDrawWeight()</code>两种抽奖策略，这种设计在实际开发起来速度是非常快的，但是后续不好维护，如果后续要新增其他的抽奖策略该类就要新增方法不利于维护也不满足开闭原则。</p><p><img src="https://qtspace.cn/contentimg/10.jpg"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawControl</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDrawRandom</span> <span class="params">(List&lt;BetUset&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 随机抽取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDrawWeight</span> <span class="params">(List&lt;BetUset&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 权重排名获取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现进行重构满足依赖倒置原则，定义一个<code>IDraw</code>抽奖接口，包含<code>prize()</code>方法，新增两个抽奖的实现类<code>DrawRandom</code>(随机抽取指定数量的用户，作为中奖用户)、<code>DrawWeightRank</code>(权重排名获取指定数量的用户，作为中奖用户),<code>DrawControl</code>抽奖控制类只定义一个<code>doDraw()</code>方法，具体的抽象策略使用参数传入，而且参数传入高层的接口类，不参与具体的实现类。这样子就满足了灵活性，后续业务如果要新增抽奖策略新增新的实现类即可，<code>DrawControl</code>类可以不用改变，满足了依赖倒置原则，同时也满足了开闭原则。</p><p><img src="https://qtspace.cn/contentimg/11.jpg"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawRandom</span> <span class="keyword">implements</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 随机抽取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawWeightRank</span> <span class="keyword">implements</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 权重排名获取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawControl</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 也可以用注入的方式</span></span><br><span class="line">    <span class="keyword">private</span> IDraw draw;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDraw</span><span class="params">(IDraw draw, List&lt;BetUser&gt; betUserList, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> draw.prize(betUserList, count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 依赖倒置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM-类加载详解</title>
       <link href="/2022/03/19/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
       <url>/2022/03/19/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD/</url>
@@ -383,31 +408,6 @@
     
     
     <entry>
-      <title>位运算</title>
-      <link href="/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-      <url>/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-      
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">符号</th><th align="center">描述</th><th align="center">栗子</th></tr></thead><tbody><tr><td align="center">&amp;</td><td align="center">与运算，两个位都为1时，结果为1，否则为0</td><td align="center">比如2 &amp; 3，2的二进制为10，3的二进制为11，与运算为10，转成十进制为2</td></tr><tr><td align="center">|</td><td align="center">或运算，两个位都为0时，结果为0，否则为1</td><td align="center">比如2 | 3，2的二进制为10，3的二进制为11，或运算为11，转成十进制为3</td></tr><tr><td align="center">^</td><td align="center">异或运算，两个位相同为0，不相同为1</td><td align="center">比如2 ^ 3，2的二进制为10，3的二进制为11，与或运算为01，转成十进制为1</td></tr><tr><td align="center">~</td><td align="center">取反运算，1变0，0变1</td><td align="center">比如~2 ，2的二进制为10，取反运算为01，转成十进制为1</td></tr><tr><td align="center">&gt;&gt;</td><td align="center">按位右移运算，高位补0</td><td align="center">比如10&gt;&gt;2，10的二进制为1010，往右移2位高位补0为0010，转成十进制就为2</td></tr><tr><td align="center">&lt;&lt;</td><td align="center">按位左移运算，低位补0</td><td align="center">比如10&lt;&lt;2，10的二进制为1010，往左移2位低位补0为101000，转成十进制为40</td></tr><tr><td align="center">&gt;&gt;&gt;</td><td align="center">按位右移补0操作运算</td><td align="center">比如10&gt;&gt;&gt;2，10的二进制为1010，右移2位补0为0010，转成十进制为2</td></tr></tbody></table>]]></content>
-      
-      
-      <categories>
-          
-          <category> 位运算 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 位运算 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>windows安装kafka</title>
       <link href="/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/"/>
       <url>/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</url>
@@ -425,6 +425,31 @@
         <tags>
             
             <tag> Kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>位运算</title>
+      <link href="/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+      <url>/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+      
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">符号</th><th align="center">描述</th><th align="center">栗子</th></tr></thead><tbody><tr><td align="center">&amp;</td><td align="center">与运算，两个位都为1时，结果为1，否则为0</td><td align="center">比如2 &amp; 3，2的二进制为10，3的二进制为11，与运算为10，转成十进制为2</td></tr><tr><td align="center">|</td><td align="center">或运算，两个位都为0时，结果为0，否则为1</td><td align="center">比如2 | 3，2的二进制为10，3的二进制为11，或运算为11，转成十进制为3</td></tr><tr><td align="center">^</td><td align="center">异或运算，两个位相同为0，不相同为1</td><td align="center">比如2 ^ 3，2的二进制为10，3的二进制为11，与或运算为01，转成十进制为1</td></tr><tr><td align="center">~</td><td align="center">取反运算，1变0，0变1</td><td align="center">比如~2 ，2的二进制为10，取反运算为01，转成十进制为1</td></tr><tr><td align="center">&gt;&gt;</td><td align="center">按位右移运算，高位补0</td><td align="center">比如10&gt;&gt;2，10的二进制为1010，往右移2位高位补0为0010，转成十进制就为2</td></tr><tr><td align="center">&lt;&lt;</td><td align="center">按位左移运算，低位补0</td><td align="center">比如10&lt;&lt;2，10的二进制为1010，往左移2位低位补0为101000，转成十进制为40</td></tr><tr><td align="center">&gt;&gt;&gt;</td><td align="center">按位右移补0操作运算</td><td align="center">比如10&gt;&gt;&gt;2，10的二进制为1010，右移2位补0为0010，转成十进制为2</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 位运算 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 位运算 </tag>
             
         </tags>
       

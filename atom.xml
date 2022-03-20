@@ -6,7 +6,7 @@
   <link href="https://qtspace.cn/atom.xml" rel="self"/>
   
   <link href="https://qtspace.cn/"/>
-  <updated>2022-03-19T11:35:25.958Z</updated>
+  <updated>2022-03-20T08:41:07.688Z</updated>
   <id>https://qtspace.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>六大设计模式原则-依赖倒置原则</title>
+    <link href="https://qtspace.cn/2022/03/20/%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/"/>
+    <id>https://qtspace.cn/2022/03/20/%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/</id>
+    <published>2022-03-19T16:00:00.000Z</published>
+    <updated>2022-03-20T08:41:07.688Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、依赖倒置原则定义"><a href="#一、依赖倒置原则定义" class="headerlink" title="一、依赖倒置原则定义"></a>一、依赖倒置原则定义</h3><p>依赖倒置原则：<strong>抽象不应该依赖于实现，实现应该依赖于抽象，也就是说我们应该面对抽象(接口)编程，而不应该面对实现编程。</strong></p><h3 id="二、依赖倒置原则描述"><a href="#二、依赖倒置原则描述" class="headerlink" title="二、依赖倒置原则描述"></a>二、依赖倒置原则描述</h3><p>依赖倒置原则要求我们在程序代码中传递参数或在关联关系时，尽量引用高层次类抽象类(接口类)，而不应该引用具体的实现类，即使用抽象类或者接口进行变量类型声明、参数类型声明、方法返回结果声明。</p><p>在引用抽象层之后，系统将得到很好的灵活性，抽象类无需改变，只需新增新的实现类即可，也满足了开闭原则。</p><h3 id="三、依赖倒置原则示例场景"><a href="#三、依赖倒置原则示例场景" class="headerlink" title="三、依赖倒置原则示例场景"></a>三、依赖倒置原则示例场景</h3><p>现有一个抽奖策略的设计，在不使用设计模式时，设计了一个<code>DrawControl</code>抽奖控制类，这个类里面包含了<code>doDrawRandom()</code>、<code>doDrawWeight()</code>两种抽奖策略，这种设计在实际开发起来速度是非常快的，但是后续不好维护，如果后续要新增其他的抽奖策略该类就要新增方法不利于维护也不满足开闭原则。</p><p><img src="https://qtspace.cn/contentimg/10.jpg"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawControl</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDrawRandom</span> <span class="params">(List&lt;BetUset&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 随机抽取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDrawWeight</span> <span class="params">(List&lt;BetUset&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 权重排名获取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现进行重构满足依赖倒置原则，定义一个<code>IDraw</code>抽奖接口，包含<code>prize()</code>方法，新增两个抽奖的实现类<code>DrawRandom</code>(随机抽取指定数量的用户，作为中奖用户)、<code>DrawWeightRank</code>(权重排名获取指定数量的用户，作为中奖用户),<code>DrawControl</code>抽奖控制类只定义一个<code>doDraw()</code>方法，具体的抽象策略使用参数传入，而且参数传入高层的接口类，不参与具体的实现类。这样子就满足了灵活性，后续业务如果要新增抽奖策略新增新的实现类即可，<code>DrawControl</code>类可以不用改变，满足了依赖倒置原则，同时也满足了开闭原则。</p><p><img src="https://qtspace.cn/contentimg/11.jpg"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawRandom</span> <span class="keyword">implements</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 随机抽取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawWeightRank</span> <span class="keyword">implements</span> <span class="title class_">IDraw</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">prize</span><span class="params">(List&lt;BetUser&gt; list, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="comment">// 权重排名获取指定数量的用户，作为中奖用户</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DrawControl</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 也可以用注入的方式</span></span><br><span class="line">    <span class="keyword">private</span> IDraw draw;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;BetUser&gt; <span class="title function_">doDraw</span><span class="params">(IDraw draw, List&lt;BetUser&gt; betUserList, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> draw.prize(betUserList, count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;一、依赖倒置原则定义&quot;&gt;&lt;a href=&quot;#一、依赖倒置原则定义&quot; class=&quot;headerlink&quot; title=&quot;一、依赖倒置原则定义&quot;&gt;&lt;/a&gt;一、依赖倒置原则定义&lt;/h3&gt;&lt;p&gt;依赖倒置原则：&lt;strong&gt;抽象不应该依赖于实现，实现应该依赖于抽象，也就</summary>
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://qtspace.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="依赖倒置" scheme="https://qtspace.cn/tags/%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>JVM-类加载详解</title>
@@ -389,6 +413,30 @@
   </entry>
   
   <entry>
+    <title>windows安装kafka</title>
+    <link href="https://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/"/>
+    <id>https://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</id>
+    <published>2022-03-01T16:00:00.000Z</published>
+    <updated>2022-03-05T14:15:19.290Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1-先下载并启动zookeeper（启动窗口不能关闭）"><a href="#1-先下载并启动zookeeper（启动窗口不能关闭）" class="headerlink" title="1. 先下载并启动zookeeper（启动窗口不能关闭）"></a>1. 先下载并启动zookeeper（启动窗口不能关闭）</h5><h5 id="2-下载kafka：http-kafka-apache-org-downloads-html-（注意下载binary版本的，不要下载3-0版本的，3-0windows下有问题，启动报错，换成2-8就没问题）"><a href="#2-下载kafka：http-kafka-apache-org-downloads-html-（注意下载binary版本的，不要下载3-0版本的，3-0windows下有问题，启动报错，换成2-8就没问题）" class="headerlink" title="2. 下载kafka：http://kafka.apache.org/downloads.html （注意下载binary版本的，不要下载3.0版本的，3.0windows下有问题，启动报错，换成2.8就没问题）"></a>2. 下载kafka：<a href="http://kafka.apache.org/downloads.html">http://kafka.apache.org/downloads.html</a> （注意下载binary版本的，不要下载3.0版本的，3.0windows下有问题，启动报错，换成2.8就没问题）</h5><h5 id="3-解压到相应文件夹，进入config目录下，找到server-properties文件，并作以下修改："><a href="#3-解压到相应文件夹，进入config目录下，找到server-properties文件，并作以下修改：" class="headerlink" title="3. 解压到相应文件夹，进入config目录下，找到server.properties文件，并作以下修改："></a>3. 解压到相应文件夹，进入config目录下，找到server.properties文件，并作以下修改：</h5><p>　　找到并编辑 log.dirs&#x3D;D:\soft\kafka\kafka_2.13-2.8.0\kafka-logs  (kafka的解压目录，kafka-logs文件夹不用自己新建)</p><p>　　找到并编辑zookeeper.connect&#x3D;localhost:2181 （一般默认就是localhost:2181）</p><h5 id="4-打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）"><a href="#4-打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）" class="headerlink" title="4. 打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）"></a>4. 打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-server-start.bat .\config\server.properties</span><br></pre></td></tr></table></figure><h5 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h5><h6 id="1）打开一个新的命令窗口，输入下面命令创建主题，提示Created-topic-主题名则表示成功"><a href="#1）打开一个新的命令窗口，输入下面命令创建主题，提示Created-topic-主题名则表示成功" class="headerlink" title="1）打开一个新的命令窗口，输入下面命令创建主题，提示Created topic 主题名则表示成功"></a>1）打开一个新的命令窗口，输入下面命令创建主题，提示Created topic 主题名则表示成功</h6><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure><h6 id="2）查看已经创建的主题命令："><a href="#2）查看已经创建的主题命令：" class="headerlink" title="2）查看已经创建的主题命令："></a>2）查看已经创建的主题命令：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure><h6 id="3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入-hello-world消息"><a href="#3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入-hello-world消息" class="headerlink" title="3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入 hello world消息"></a>3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入 hello world消息</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure><h6 id="4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello-world消息"><a href="#4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello-world消息" class="headerlink" title="4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello world消息"></a>4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello world消息</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;1-先下载并启动zookeeper（启动窗口不能关闭）&quot;&gt;&lt;a href=&quot;#1-先下载并启动zookeeper（启动窗口不能关闭）&quot; class=&quot;headerlink&quot; title=&quot;1. 先下载并启动zookeeper（启动窗口不能关闭）&quot;&gt;&lt;/a&gt;1. 先</summary>
+      
+    
+    
+    
+    <category term="Kafka" scheme="https://qtspace.cn/categories/Kafka/"/>
+    
+    
+    <category term="Kafka" scheme="https://qtspace.cn/tags/Kafka/"/>
+    
+  </entry>
+  
+  <entry>
     <title>位运算</title>
     <link href="https://qtspace.cn/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     <id>https://qtspace.cn/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</id>
@@ -418,30 +466,6 @@
     
     
     <category term="位运算" scheme="https://qtspace.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows安装kafka</title>
-    <link href="https://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/"/>
-    <id>https://qtspace.cn/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</id>
-    <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2022-03-05T14:15:19.290Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="1-先下载并启动zookeeper（启动窗口不能关闭）"><a href="#1-先下载并启动zookeeper（启动窗口不能关闭）" class="headerlink" title="1. 先下载并启动zookeeper（启动窗口不能关闭）"></a>1. 先下载并启动zookeeper（启动窗口不能关闭）</h5><h5 id="2-下载kafka：http-kafka-apache-org-downloads-html-（注意下载binary版本的，不要下载3-0版本的，3-0windows下有问题，启动报错，换成2-8就没问题）"><a href="#2-下载kafka：http-kafka-apache-org-downloads-html-（注意下载binary版本的，不要下载3-0版本的，3-0windows下有问题，启动报错，换成2-8就没问题）" class="headerlink" title="2. 下载kafka：http://kafka.apache.org/downloads.html （注意下载binary版本的，不要下载3.0版本的，3.0windows下有问题，启动报错，换成2.8就没问题）"></a>2. 下载kafka：<a href="http://kafka.apache.org/downloads.html">http://kafka.apache.org/downloads.html</a> （注意下载binary版本的，不要下载3.0版本的，3.0windows下有问题，启动报错，换成2.8就没问题）</h5><h5 id="3-解压到相应文件夹，进入config目录下，找到server-properties文件，并作以下修改："><a href="#3-解压到相应文件夹，进入config目录下，找到server-properties文件，并作以下修改：" class="headerlink" title="3. 解压到相应文件夹，进入config目录下，找到server.properties文件，并作以下修改："></a>3. 解压到相应文件夹，进入config目录下，找到server.properties文件，并作以下修改：</h5><p>　　找到并编辑 log.dirs&#x3D;D:\soft\kafka\kafka_2.13-2.8.0\kafka-logs  (kafka的解压目录，kafka-logs文件夹不用自己新建)</p><p>　　找到并编辑zookeeper.connect&#x3D;localhost:2181 （一般默认就是localhost:2181）</p><h5 id="4-打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）"><a href="#4-打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）" class="headerlink" title="4. 打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）"></a>4. 打开命令命令进到kafka目录，输入下面命令启动kakfa（窗口不能关闭）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-server-start.bat .\config\server.properties</span><br></pre></td></tr></table></figure><h5 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h5><h6 id="1）打开一个新的命令窗口，输入下面命令创建主题，提示Created-topic-主题名则表示成功"><a href="#1）打开一个新的命令窗口，输入下面命令创建主题，提示Created-topic-主题名则表示成功" class="headerlink" title="1）打开一个新的命令窗口，输入下面命令创建主题，提示Created topic 主题名则表示成功"></a>1）打开一个新的命令窗口，输入下面命令创建主题，提示Created topic 主题名则表示成功</h6><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure><h6 id="2）查看已经创建的主题命令："><a href="#2）查看已经创建的主题命令：" class="headerlink" title="2）查看已经创建的主题命令："></a>2）查看已经创建的主题命令：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure><h6 id="3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入-hello-world消息"><a href="#3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入-hello-world消息" class="headerlink" title="3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入 hello world消息"></a>3）打开一个新的命令窗口，创建生产者，输入以下命令，创建完毕之后可以输入 hello world消息</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure><h6 id="4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello-world消息"><a href="#4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello-world消息" class="headerlink" title="4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello world消息"></a>4）打开一个新的命令窗口，创建消费者，输入以下命令，可以看到消费了hello world消息</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h5 id=&quot;1-先下载并启动zookeeper（启动窗口不能关闭）&quot;&gt;&lt;a href=&quot;#1-先下载并启动zookeeper（启动窗口不能关闭）&quot; class=&quot;headerlink&quot; title=&quot;1. 先下载并启动zookeeper（启动窗口不能关闭）&quot;&gt;&lt;/a&gt;1. 先</summary>
-      
-    
-    
-    
-    <category term="Kafka" scheme="https://qtspace.cn/categories/Kafka/"/>
-    
-    
-    <category term="Kafka" scheme="https://qtspace.cn/tags/Kafka/"/>
     
   </entry>
   
