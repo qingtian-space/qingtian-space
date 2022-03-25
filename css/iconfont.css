@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3276181 */
-  src: url('//at.alicdn.com/t/font_3276181_bij1v96yifb.woff2?t=1648197500646') format('woff2'),
-       url('//at.alicdn.com/t/font_3276181_bij1v96yifb.woff?t=1648197500646') format('woff'),
-       url('//at.alicdn.com/t/font_3276181_bij1v96yifb.ttf?t=1648197500646') format('truetype');
+  src: url('//at.alicdn.com/t/font_3276181_e95b4vk7l9.woff2?t=1648198160898') format('woff2'),
+       url('//at.alicdn.com/t/font_3276181_e95b4vk7l9.woff?t=1648198160898') format('woff'),
+       url('//at.alicdn.com/t/font_3276181_e95b4vk7l9.ttf?t=1648198160898') format('truetype');
 }
 
 .iconfont {
@@ -13,19 +13,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-jianshu:before {
+  content: "\e603";
+  font-size: 22px;
+}
+
+.icon-csdn1-copy:before {
+  content: "\e604";
+  font-size: 22px;
+}
+
+.icon-sf:before {
+  content: "\e605";
+  font-size: 22px;
+}
+
 .icon-csdn1:before {
   content: "\e600";
-  font-size: 22px;
 }
 
 .icon-yanzheng-jianshu:before {
   content: "\e68a";
-  font-size: 22px;
 }
 
 .icon-juejin-logo:before {
   content: "\e601";
   font-size: 22px;
+  
 }
 
 .icon-timeline-fill:before {
@@ -46,6 +60,7 @@
 
 .icon-github:before {
   content: "\e628";
+  font-size: 22px;
 }
 
 .icon-shijianzhou:before {
@@ -82,10 +97,8 @@
 
 .icon-github1:before {
   content: "\ea0b";
-  font-size: 22px;
 }
 
 .icon-a-SegmentFaultsifou:before {
   content: "\e63e";
-  font-size: 22px;
 }
