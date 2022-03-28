@@ -20,7 +20,9 @@
       
         <tags>
             
-            <tag> AbstractQueuedSynchronizer - ReentrantLock </tag>
+            <tag> AbstractQueuedSynchronizer </tag>
+            
+            <tag> ReentrantLock </tag>
             
         </tags>
       
@@ -45,7 +47,9 @@
       
         <tags>
             
-            <tag> volatile - synchronized </tag>
+            <tag> volatile </tag>
+            
+            <tag> synchronized </tag>
             
         </tags>
       
