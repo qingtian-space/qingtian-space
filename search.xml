@@ -539,31 +539,6 @@
     
     
     <entry>
-      <title>位运算</title>
-      <link href="/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-      <url>/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-      
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">符号</th><th align="center">描述</th><th align="center">栗子</th></tr></thead><tbody><tr><td align="center">&amp;</td><td align="center">与运算，两个位都为1时，结果为1，否则为0</td><td align="center">比如2 &amp; 3，2的二进制为10，3的二进制为11，与运算为10，转成十进制为2</td></tr><tr><td align="center">|</td><td align="center">或运算，两个位都为0时，结果为0，否则为1</td><td align="center">比如2 | 3，2的二进制为10，3的二进制为11，或运算为11，转成十进制为3</td></tr><tr><td align="center">^</td><td align="center">异或运算，两个位相同为0，不相同为1</td><td align="center">比如2 ^ 3，2的二进制为10，3的二进制为11，与或运算为01，转成十进制为1</td></tr><tr><td align="center">~</td><td align="center">取反运算，1变0，0变1</td><td align="center">比如~2 ，2的二进制为10，取反运算为01，转成十进制为1</td></tr><tr><td align="center">&gt;&gt;</td><td align="center">按位右移运算，高位补0</td><td align="center">比如10&gt;&gt;2，10的二进制为1010，往右移2位高位补0为0010，转成十进制就为2</td></tr><tr><td align="center">&lt;&lt;</td><td align="center">按位左移运算，低位补0</td><td align="center">比如10&lt;&lt;2，10的二进制为1010，往左移2位低位补0为101000，转成十进制为40</td></tr><tr><td align="center">&gt;&gt;&gt;</td><td align="center">按位右移补0操作运算</td><td align="center">比如10&gt;&gt;&gt;2，10的二进制为1010，右移2位补0为0010，转成十进制为2</td></tr></tbody></table>]]></content>
-      
-      
-      <categories>
-          
-          <category> 位运算 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 位运算 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>windows安装kafka</title>
       <link href="/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/"/>
       <url>/2022/03/02/windows%E5%AE%89%E8%A3%85kafka/</url>
@@ -581,6 +556,31 @@
         <tags>
             
             <tag> Kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>位运算</title>
+      <link href="/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+      <url>/2022/03/02/java%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+      
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">符号</th><th align="center">描述</th><th align="center">栗子</th></tr></thead><tbody><tr><td align="center">&amp;</td><td align="center">与运算，两个位都为1时，结果为1，否则为0</td><td align="center">比如2 &amp; 3，2的二进制为10，3的二进制为11，与运算为10，转成十进制为2</td></tr><tr><td align="center">|</td><td align="center">或运算，两个位都为0时，结果为0，否则为1</td><td align="center">比如2 | 3，2的二进制为10，3的二进制为11，或运算为11，转成十进制为3</td></tr><tr><td align="center">^</td><td align="center">异或运算，两个位相同为0，不相同为1</td><td align="center">比如2 ^ 3，2的二进制为10，3的二进制为11，与或运算为01，转成十进制为1</td></tr><tr><td align="center">~</td><td align="center">取反运算，1变0，0变1</td><td align="center">比如~2 ，2的二进制为10，取反运算为01，转成十进制为1</td></tr><tr><td align="center">&gt;&gt;</td><td align="center">按位右移运算，高位补0</td><td align="center">比如10&gt;&gt;2，10的二进制为1010，往右移2位高位补0为0010，转成十进制就为2</td></tr><tr><td align="center">&lt;&lt;</td><td align="center">按位左移运算，低位补0</td><td align="center">比如10&lt;&lt;2，10的二进制为1010，往左移2位低位补0为101000，转成十进制为40</td></tr><tr><td align="center">&gt;&gt;&gt;</td><td align="center">按位右移补0操作运算</td><td align="center">比如10&gt;&gt;&gt;2，10的二进制为1010，右移2位补0为0010，转成十进制为2</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 位运算 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 位运算 </tag>
             
         </tags>
       
