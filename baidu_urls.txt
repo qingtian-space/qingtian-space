@@ -24,8 +24,8 @@ https://qtspace.cn/2022/03/08/string-principle/
 https://qtspace.cn/2022/03/05/HashCode-HashMap/
 https://qtspace.cn/2022/03/02/github-push-local-project/
 https://qtspace.cn/2022/03/02/hexo-build-blog/
-https://qtspace.cn/2022/03/02/java-arraydeque-linkedlist/
 https://qtspace.cn/2022/03/02/java-arraylist-linkedlist/
+https://qtspace.cn/2022/03/02/java-arraydeque-linkedlist/
 https://qtspace.cn/2022/03/02/java-bit-operation/
 https://qtspace.cn/2022/03/02/java-collections/
 https://qtspace.cn/2022/03/02/java-create-threadpool/
